@@ -26,7 +26,7 @@ let salaries = [{
 //crea una arrow function getEmployee que retorni una Promise efectuant la cerca en l'objecte pel seu id.
 const getEmployee = (id) => {
     return new Promise((resolve, reject) => {
-        if(id < employees.length) {
+        if(id > 0 && id <= employees.length) {
             for (let x = 0; x < employees.length; x++) {
                 if (employees[x].id === id) {
                     resolve(employees[x])
@@ -58,8 +58,8 @@ const getSalary = (employee) => {
         reject(`Salary not found`);
     });
     tempPromise.then(
-        function(value) {value;},//con console.log retorna el salario y sólo con value y console.log después retorna undefined
-        function(error) {error;}
+        function(value) {console.log(value);},//con console.log retorna el salario y sólo con value y console.log después retorna undefined
+        function(error) {console.log(error);}
         );
 }
 
@@ -72,22 +72,7 @@ const getSalary = (employee) => {
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 
 
-console.log(getSalary(employees[1])); 
-/* getEmployee(2)
-.then(getSalary()) //================================================> getEmployee tiene que retornar un objeto para que enlace con getSalary?
-.catch(() => console.log('EMPLOYEE NOT FOUND')) */
-
-
-/* doSomething()
-.then(function(result) {
-  return doSomethingElse(result);
-})
-.then(function(newResult) {
-  return doThirdThing(newResult);
-})
-.then(function(finalResult) {
-  console.log('Got the final result: ' + finalResult);
-})
-.catch(failureCallback);
-
- */
+//console.log(getSalary(employees[1]));
+const final = getEmployee(1)
+.then(result => getSalary(result))
+.catch(result => console.log(`this id does not exist in employees object`))
