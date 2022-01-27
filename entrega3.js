@@ -57,10 +57,12 @@ let salaries = [{
 //crea una arrow function getEmployee que retorni una Promise efectuant la cerca en l'objecte pel seu id.
 const getEmployee = (id) => {
     return new Promise((resolve, reject) => {
-
-        for (let x = 0; x < employees.length; x++) {
-            if (employees[x].id === id) {
-                resolve(employees[x])
+        if(id > 0 && id <= employees.length) {
+            for (let x = 0; x < employees.length; x++) {
+                if (employees[x].id === id) {
+                    console.log(`El salario de ${employees[x].name} es de USD `);
+                    resolve(employees[x])
+                }
             }
         }
         reject(`Employee not found`);
@@ -68,40 +70,32 @@ const getEmployee = (id) => {
 
 }
 
-//comprobar que devuelve Promise { 'Linux Torvalds' }
-//console.log(getEmployee(1));
+//console.log(getEmployee(4));
 
-//__________________________________________________________________________
 //Nivell 2 - Exercici 2
 //Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
 
 const getSalary = (employee) => {
-    const tempPromise = new Promise((resolve, reject) => {
-
-        for (let x = 0; x < salaries.length; x++) {
-            if (salaries[x].id === employee.id) {
-                resolve(salaries[x].salary)
+    return new Promise((resolve, reject) => {
+        if (employee != undefined) {
+            for (let x = 0; x < salaries.length; x++) {
+                if (salaries[x].id === employee.id) {
+                    //console.log(salaries[x]);
+                    resolve(salaries[x].salary)
+                }
             }
         }
         reject(`Salary not found`);
     });
-    tempPromise.then(
-        function(value) {console.log(value);},
-        function(error) {console.log(error);}
-        );
 }
 
-//Para probar que funciona
-//getSalary(employees[2]);
+//getSalary(employees[1]);
 
 //Nivell 2 - Exercici 3
 //Invoca la primera funció getEmployee i després getSalary niant l'execució de les dues promises.
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 
-getEmployee
-.then(value => {console.log(value); return getSalary}) //================================================> getEmployee tiene que retornar un objeto para que enlace con getSalary?
-.then(value => console.log(value))
-.catch(() => console.log('EMPLOYEE NOT FOUND'))
-
-
+getEmployee(1)
+.then(result => getSalary(result))
+.then(result => console.log(result))
+.catch(error => console.log(error))

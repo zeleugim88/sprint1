@@ -29,6 +29,7 @@ const getEmployee = (id) => {
         if(id > 0 && id <= employees.length) {
             for (let x = 0; x < employees.length; x++) {
                 if (employees[x].id === id) {
+                    console.log(`El salario de ${employees[x].name} es de USD `);
                     resolve(employees[x])
                 }
             }
@@ -38,41 +39,35 @@ const getEmployee = (id) => {
 
 }
 
-//comprobar que devuelve Promise { 'Linux Torvalds' }
 //console.log(getEmployee(4));
 
-//__________________________________________________________________________
 //Nivell 2 - Exercici 2
 //Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari.
 
 
 const getSalary = (employee) => {
-    const tempPromise = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         if (employee != undefined) {
             for (let x = 0; x < salaries.length; x++) {
                 if (salaries[x].id === employee.id) {
+                    //console.log(salaries[x]);
                     resolve(salaries[x].salary)
                 }
             }
         }
         reject(`Salary not found`);
     });
-    tempPromise.then(
-        function(value) {console.log(value);},//con console.log retorna el salario y sólo con value y console.log después retorna undefined
-        function(error) {console.log(error);}
-        );
 }
 
-
-//Para probar que funciona
-//getSalary(employees[2]);
+//getSalary(employees[1]);
 
 //Nivell 2 - Exercici 3
 //Invoca la primera funció getEmployee i després getSalary niant l'execució de les dues promises.
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises
 
-
-//console.log(getSalary(employees[1]));
-const final = getEmployee(1)
+getEmployee(1)
 .then(result => getSalary(result))
-.catch(result => console.log(`this id does not exist in employees object`))
+.then(result => console.log(result))
+.catch(error => console.log(error))
+
+
+
