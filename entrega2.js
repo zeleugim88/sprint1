@@ -46,21 +46,21 @@ pepito.dirNom()
 class Persona {
   constructor(nom, cognom) {
 
-      if (this.name = nom,
-          this.surname = cognom,
-          this.constructor === Persona) {
-          throw new Error("No se puede instanciar una clase abstracta")
-      };
+    if (this.name = nom,
+      this.surname = cognom,
+      this.constructor === Persona) {
+      throw new Error("No se puede instanciar una clase abstracta")
+    };
   }
   dadesPersona() {
-      console.log(this.name + " " + this.surname);
+    console.log(this.name + " " + this.surname);
   }
 }
 
 class Personaje extends Persona {
   constructor(nom, cognom) {
-      super(nom, cognom);
-    }
+    super(nom, cognom);
+  }
 }
 
 const f1 = (nom, cognom) => new Persona(nom, cognom);
@@ -72,7 +72,7 @@ const f2 = (nom, cognom) => new Personaje(nom, cognom);
 //Se puede instanciar una subclase
 const persona1 = f2("Esther", "Colero");
 const persona2 = f2("Benito", "Camela");
-const persona3 = f2("Elver", "Galarga"); 
+const persona3 = f2("Elver", "Galarga");
 
 persona1.dadesPersona()
 persona2.dadesPersona()
