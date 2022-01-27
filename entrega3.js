@@ -23,9 +23,17 @@ fPromise(9).then( //Parámetro x: nota en el examen de IT Academy
 //Nivell 1 - Exercici 2
 //Crea una arrow function que rebi un paràmetre i una funció callback i li passi a la funció un missatge o un altre (que s'imprimirà per consola) en funció del paràmetre rebut.
 
-const callBack = (x) => x%2 == 0? "par":"impar";
+/* const callBack = (x) => x%2 == 0? "par":"impar";
 const myArrowFunction = (x,y) => console.log(y(x));
-myArrowFunction(222,callBack);
+myArrowFunction(222,callBack); */
+
+//CORRECCIÓ 27/01/2022 => El N1 E2 no hace exactamente lo que se pide (pasar a la función callback un valor u otro en función del otro parametro)
+
+const callBack = (parOimpar) => parOimpar == `par`? console.log(`Número par!!!!!!`):console.log(`Número impar!!!!!!!`);
+const arrowFunction = (parametro, callback) => {
+    callback(parametro%2 == 0? `par`:`impar`)
+}
+arrowFunction(17,callBack);
 
 //==============================================================================================================================================
 
