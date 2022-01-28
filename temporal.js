@@ -38,7 +38,7 @@ const obj = {
     name: 'Jeff Bezos'
 };
 
-//Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari.
+//Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari.dfsf
 
 const getSalary = (obj) => {
     return new Promise ((resolve, reject) => {
