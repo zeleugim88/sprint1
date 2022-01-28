@@ -50,12 +50,14 @@ const getSalary = (obj) => {
 
 //- Exercici 2
 //Crea una funció asíncrona que rebi un id d'empleat i imprimeixi per pantalla el nom de l'empleat i el seu salari, usant les funcions que has definit a l'exercici anterior.
-async (id) => {
-    const promise1 = await getEmployee(2);
-    console.log(promise1)
-    const promise2 = await console.log(getSalary(promise1))
-    console.log(promise2)
+const finalFunction = async (id) => {
+    const promise1 = await getEmployee(id);
+    console.log("PROMESA1:"+promise1) // DEVUELVE EL RESULTADO COMO STRING EN VEZ DE COMO OBJETO
+/*     const promise2 = await getSalary(promise1)
+    console.log(promise2) */
 }
+
+finalFunction(1);
 
 
 //Nivell 2 - Exercici 1
@@ -68,14 +70,15 @@ const fPromise = () => {
 
 const fAsincrona = async () => {
     try {
-        await console.log(fPromise())
+        const result = await fPromise();
+        console.log(result)
       }
       catch(err) {
         "Ohh shit"
       } 
 }
 
-fAsincrona();
+//fAsincrona();
 
 /* Nivell 3 - Exercici 1
 Captura tots els errors possibles dels nivells 1 i 2. */
