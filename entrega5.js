@@ -87,17 +87,11 @@ fs4.readdir(filePath2, function(err, items) {
     }
 }); */
 
-//'dir' => directorio por defecto
+//The dir command displays a list of files and subdirectories in a directory in Windows. In Linux is ls
+const cp = require('child_process');
 
-var spawn = require('child_process').spawn;
-var ls = spawn('ls', [filePath2]);
-
-ls.stdout.on('data', function(data){
-    console.log(data);
-  });
-
-var exec = require('child_process').exec
-
-exec(filePath2, function (err, stdout, stderr){
-    console.log(stderr)
-})
+//const exec_options = {}
+//cp.exec('dir',exec_options, (err, stdout, stderr) =>
+cp.exec('dir', (err, stdout, stderr) => {
+console.log(stdout)
+});
