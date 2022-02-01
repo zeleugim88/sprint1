@@ -24,31 +24,42 @@ let salaries = [{
 }];
 
 //Crea una arrow function getEmployee que retorni una Promise efectuant la cerca en l'objecte pel seu id. 
-/* const getEmployee = (id) => { 
+
+/* async function getEmployee(id) {
+    const foundId = employees.filter(employees => employees.id === id);
+    return foundId[0];
+  }
+  */
+ //CORRECCIÓ => Todo correcto menos el N1 E1, que tienen que ser las mismas funciones que devuelven promesas de la entrega anterior 
+ //(aunque bien hecho usando ahora métodos de arrays para buscar los objetos, intenta combinar las dos cosas)!
+
+const getEmployee = (id) => { 
     return new Promise ((resolve, reject) =>{
         const foundId = employees.filter(employees => employees.id === id)
         resolve(foundId[0])
     })
-} */
+}
 
-async function getEmployee(id) {
-    const foundId = employees.filter(employees => employees.id === id);
-    return foundId[0];
-  }
- 
+  //console.log(getEmployee(2));
 
 //Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari
-/* const getSalary = (obj) => {
+
+/* async function getSalary(obj) {
+    const foundObject = salaries.filter(salaries => salaries.id === obj.id); //[{}]
+        return foundObject[0].salary; 
+  } */
+  //CORRECCIÓ => Todo correcto menos el N1 E1, que tienen que ser las mismas funciones que devuelven promesas de la entrega anterior 
+ //(aunque bien hecho usando ahora métodos de arrays para buscar los objetos, intenta combinar las dos cosas)!
+
+const getSalary = (obj) => {
     return new Promise ((resolve, reject) => {
         const foundObject = salaries.filter(salaries => salaries.id === obj.id);
         resolve(foundObject[0].salary);
     })
-} */
+}
 
-async function getSalary(obj) {
-    const foundObject = salaries.filter(salaries => salaries.id === obj.id); //[{}]
-        return foundObject[0].salary; 
-  }
+//console.log(getSalary({id: 1, name:'Linux Torvalds'}));
+
 //==========================================================================================================================================================
 
 //- Exercici 2
@@ -63,7 +74,7 @@ const finalFunction = async (id) => {
     catch(err) {console.log("No existe salario para este id del empleado")}
 }
 
-finalFunction(1);
+//finalFunction(1);
 
 //==========================================================================================================================================================
 //Nivell 2 - Exercici 1
