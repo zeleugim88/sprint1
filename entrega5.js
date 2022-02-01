@@ -13,7 +13,8 @@ const demores1segon = function () {
 //Opció síncrona
 const fs1 = require('fs');
 const fEscriure = (file,text) => fs1.writeFileSync(file, text)
-fEscriure ('test.txt','Awesome text'); 
+
+//fEscriure ('test.txt','Awesome text'); 
 
 //Opció asíncrona => fs1.writeFile
 
