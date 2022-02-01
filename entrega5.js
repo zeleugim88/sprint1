@@ -66,7 +66,7 @@ const displayFiles = (folder) => {
 //Crea una funció que creï dos fitxers codificats en hexadecimal i en base64 respectivament, a partir del fitxer del nivell 1
 const fs6 = require('fs');
 
-const fCodificar = (file) => {
+const fEncode = (file) => {
 
     const path = __dirname;
     const fileText = fs6.readFileSync(file, { encoding: 'utf8', flag: 'r' });
@@ -77,7 +77,7 @@ const fCodificar = (file) => {
     fEscriure('test64.txt', text64);
 }
 
-//fCodificar('./test.txt')
+//fEncode('./test.txt')
 
 //Crea una funció que guardi els fitxers del punt anterior, ara encriptats amb l'algorisme aes-192-cbc, i esborri els fitxers inicials
 const crypto = require('crypto');
@@ -87,7 +87,7 @@ const password = '123456789'
 var key = crypto.scryptSync(password, 'IT Academy', 24);
 //const key = crypto.randomFillSync(new Uint8Array(24));
 
-const codeCrypter  = (fileHex, file64) => {
+const fEncrypt   = (fileHex, file64) => {
     //read old files
     const textHex = fs6.readFileSync(fileHex, { encoding: 'utf8', flag: 'r' });
     const text64 = fs6.readFileSync(file64, { encoding: 'utf8', flag: 'r' });
@@ -104,12 +104,12 @@ const codeCrypter  = (fileHex, file64) => {
     fs6.unlinkSync(file64)
 }
 
-//codeCrypter('./testHex.txt','./test64.txt');
+//fEncrypt('./testHex.txt','./test64.txt');
 
 
 //Crea una altra funció que desencripti i descodifiqui els fitxers de l'apartat anterior tornant a generar una còpia de l'inicial
 
-const decodeCrypter = (encryptedHex, encrypted64) => {
+const fDecrypt  = (encryptedHex, encrypted64) => {
      //read old files
     const textHexEncrypted = fs6.readFileSync(encryptedHex, { encoding: 'utf8', flag: 'r' });
     const text64Encrypted = fs6.readFileSync(encrypted64, { encoding: 'utf8', flag: 'r' });
@@ -124,6 +124,6 @@ const decodeCrypter = (encryptedHex, encrypted64) => {
 
 }
 
-//decodeCrypter('testHexEncoded.txt','test64Encoded.txt'); //ERROR invalid key length
+//fDecrypt('testHexEncoded.txt','test64Encoded.txt'); //ERROR invalid key length
 
 //Inclou un README amb instruccions per a l'execució de cada part
