@@ -1,4 +1,4 @@
-  //Nivell 1 - Exercici 1
+//Nivell 1 - Exercici 1
 //Donats els objectes employees i salaries:
 
 let employees = [{
@@ -30,17 +30,19 @@ let salaries = [{
     return foundId[0];
   }
   */
- //CORRECCIÓ => Todo correcto menos el N1 E1, que tienen que ser las mismas funciones que devuelven promesas de la entrega anterior 
+ //CORRECCIÓ 1=> Todo correcto menos el N1 E1, que tienen que ser las mismas funciones que devuelven promesas de la entrega anterior 
  //(aunque bien hecho usando ahora métodos de arrays para buscar los objetos, intenta combinar las dos cosas)!
-
+// CORRECCIÓ 2 => Ojo, que simplificando demasiado las funciones te has cargado la captura de errores!
+//Prueba a ver qué pasa si el ID o el employee no existen en el array y la función no tiene reject (spoiler: cosas feas).
 const getEmployee = (id) => { 
     return new Promise ((resolve, reject) =>{
         const foundId = employees.filter(employees => employees.id === id)
-        resolve(foundId[0])
+        resolve(foundId[0]? resolve(foundId[0]):reject("Id de trabajador no encontrado"))
     })
 }
 
   //console.log(getEmployee(2));
+
 
 //Crea una altra arrow function getSalary que rebi com a paràmetre un objecte employee i retorni el seu salari
 
@@ -54,7 +56,7 @@ const getEmployee = (id) => {
 const getSalary = (obj) => {
     return new Promise ((resolve, reject) => {
         const foundObject = salaries.filter(salaries => salaries.id === obj.id);
-        resolve(foundObject[0].salary);
+        foundObject[0]? resolve(foundObject[0].salary):reject("La ID del trabajador introducido no está asociada a ningún salario");
     })
 }
 
@@ -74,7 +76,7 @@ const finalFunction = async (id) => {
     catch(err) {console.log("No existe salario para este id del empleado")}
 }
 
-//finalFunction(1);
+finalFunction(33);
 
 //==========================================================================================================================================================
 //Nivell 2 - Exercici 1
